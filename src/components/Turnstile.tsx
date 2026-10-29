@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { TURNSTILE_ACTION } from "@/lib/config";
 
 declare global {
   interface Window {
@@ -40,6 +41,7 @@ export default function Turnstile({ lang, onToken }: { lang: string; onToken: (t
       if (cancelled || !ref.current || !window.turnstile) return;
       widgetId = window.turnstile.render(ref.current, {
         sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+        action: TURNSTILE_ACTION,
         language: lang,
         appearance: "interaction-only",
         callback: (token: string) => onTokenRef.current(token),

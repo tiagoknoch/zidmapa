@@ -9,7 +9,11 @@ export const NEARBY_RADIUS_M = 25;
 export const MAX_REPORTS_PER_HOUR = 10;
 export const PHOTO_BUCKET = "photos";
 
-export const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
+// Turnstile: the action the widget sends, and the hostnames its tokens may come from.
+export const TURNSTILE_ACTION = "report";
+export const TURNSTILE_HOSTNAMES = ["zidmapa.vercel.app"];
+
+export const MAP_STYLE ="https://tiles.openfreemap.org/styles/liberty";
 
 export function inSerbia(lat: number, lng: number) {
   const b = SERBIA_BBOX;
