@@ -6,6 +6,8 @@ Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
   environment: process.env.NEXT_PUBLIC_VERCEL_ENV ?? "development",
   tracesSampleRate: process.env.NODE_ENV === "development" ? 1.0 : 0.1,
+  // Scripts that browsers inject into every page (Brave's wallet, Firefox for iOS).
+  ignoreErrors: [/window\.ethereum/, /__firefox__/],
 });
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
