@@ -1,0 +1,103 @@
+{
+  "app": {
+    "name": "ZidMapa",
+    "tagline": "Report graffiti and help keep the city clean"
+  },
+  "nav": {
+    "map": "Map",
+    "account": "Account",
+    "logout": "Log out",
+    "admin": "Admin",
+    "switchLanguage": "Srpski"
+  },
+  "status": {
+    "reported": "Needs cleaning",
+    "cleaned": "Cleaned",
+    "hidden": "Hidden"
+  },
+  "map": {
+    "reportButton": "Report graffiti",
+    "loading": "Loading…",
+    "showCleaned": "Show cleaned",
+    "reportedOn": "Reported",
+    "cleanedOn": "Cleaned",
+    "reports": "Reports: {n}",
+    "notConfigured": "Database not configured yet: add your Supabase keys to .env.local.",
+    "loadError": "Couldn't load reports."
+  },
+  "report": {
+    "back": "Back",
+    "capture": {
+      "heading": "Take a photo of the graffiti",
+      "takePhoto": "Take photo",
+      "fromGallery": "Choose from gallery",
+      "processing": "Preparing photo…",
+      "error": "Couldn't read this photo. Try another one.",
+      "privacy": "Location data is removed from the photo before upload. Please don't photograph people."
+    },
+    "locate": {
+      "heading": "Where is it?",
+      "hint": "Drag the pin to the exact spot.",
+      "locating": "Finding your location…",
+      "fromPhoto": "Location taken from the photo",
+      "fromGps": "Location from your phone (±{m} m)",
+      "noLocation": "We couldn't get your location. Tap the map to place the pin.",
+      "outside": "Reports are only accepted within Serbia.",
+      "confirm": "Confirm location"
+    },
+    "nearby": {
+      "heading": "Is it one of these?",
+      "hint": "These were already reported within {m} m. If it's the same graffiti, confirm it instead of creating a new report.",
+      "checking": "Checking nearby reports…",
+      "sameOne": "Same one",
+      "noneOfThese": "None of these – new report",
+      "distance": "{m} m away"
+    },
+    "details": {
+      "heading": "Almost done",
+      "confirmHeading": "Confirm existing report",
+      "noteLabel": "Note (optional)",
+      "notePlaceholder": "e.g. side wall, about 2 m high",
+      "submit": "Send report",
+      "confirmSubmit": "Confirm report",
+      "sending": "Sending…"
+    },
+    "errors": {
+      "rate_limited": "Too many reports in a short time. Please try again later.",
+      "captcha": "Verification failed. Please try again.",
+      "outside": "Reports are only accepted within Serbia.",
+      "generic": "Something went wrong. Please try again."
+    },
+    "done": {
+      "heading": "Thank you!",
+      "body": "Your report is on the map. A cleaning team will take care of it.",
+      "confirmedBody": "Thanks for confirming – this spot now has a higher priority.",
+      "viewMap": "View on map",
+      "another": "Report another"
+    }
+  },
+  "login": {
+    "heading": "Log in",
+    "body": "You don't need an account to report graffiti. Logging in is for admins and for keeping track of your own reports.",
+    "email": "Email",
+    "send": "Send login link",
+    "sent": "Check your email and open the login link.",
+    "error": "Couldn't send the link. Please try again.",
+    "loggedInAs": "Logged in as {email}",
+    "signingIn": "Logging in…"
+  },
+  "admin": {
+    "heading": "Admin",
+    "needLogin": "Log in to access the admin page.",
+    "notAdmin": "This account is not an admin.",
+    "all": "All",
+    "markCleaned": "Mark cleaned",
+    "reopen": "Reopen",
+    "hide": "Hide",
+    "unhide": "Unhide",
+    "delete": "Delete",
+    "confirmDelete": "Tap again to delete",
+    "viewOnMap": "View on map",
+    "empty": "No reports."
+  }
+}

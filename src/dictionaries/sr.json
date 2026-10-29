@@ -1,0 +1,103 @@
+{
+  "app": {
+    "name": "ZidMapa",
+    "tagline": "Prijavi grafite i pomozi da grad bude čist"
+  },
+  "nav": {
+    "map": "Mapa",
+    "account": "Nalog",
+    "logout": "Odjavi se",
+    "admin": "Administracija",
+    "switchLanguage": "English"
+  },
+  "status": {
+    "reported": "Za čišćenje",
+    "cleaned": "Očišćeno",
+    "hidden": "Sakriveno"
+  },
+  "map": {
+    "reportButton": "Prijavi grafit",
+    "loading": "Učitavanje…",
+    "showCleaned": "Prikaži očišćene",
+    "reportedOn": "Prijavljeno",
+    "cleanedOn": "Očišćeno",
+    "reports": "Broj prijava: {n}",
+    "notConfigured": "Baza još nije podešena: dodaj Supabase ključeve u .env.local.",
+    "loadError": "Prijave ne mogu da se učitaju."
+  },
+  "report": {
+    "back": "Nazad",
+    "capture": {
+      "heading": "Fotografiši grafit",
+      "takePhoto": "Uslikaj",
+      "fromGallery": "Izaberi iz galerije",
+      "processing": "Pripremam fotografiju…",
+      "error": "Fotografija ne može da se učita. Pokušaj sa drugom.",
+      "privacy": "Podaci o lokaciji se uklanjaju iz fotografije pre slanja. Molimo te da ne fotografišeš ljude."
+    },
+    "locate": {
+      "heading": "Gde se nalazi?",
+      "hint": "Prevuci oznaku na tačno mesto.",
+      "locating": "Određujem lokaciju…",
+      "fromPhoto": "Lokacija preuzeta iz fotografije",
+      "fromGps": "Lokacija sa telefona (±{m} m)",
+      "noLocation": "Nismo uspeli da odredimo lokaciju. Dodirni mapu da postaviš oznaku.",
+      "outside": "Prijave su moguće samo na teritoriji Srbije.",
+      "confirm": "Potvrdi lokaciju"
+    },
+    "nearby": {
+      "heading": "Da li je neki od ovih?",
+      "hint": "Ovi grafiti su već prijavljeni u krugu od {m} m. Ako je isti, potvrdi postojeću prijavu umesto da praviš novu.",
+      "checking": "Proveravam prijave u blizini…",
+      "sameOne": "Isti je",
+      "noneOfThese": "Nijedan – nova prijava",
+      "distance": "udaljeno {m} m"
+    },
+    "details": {
+      "heading": "Još samo malo",
+      "confirmHeading": "Potvrdi postojeću prijavu",
+      "noteLabel": "Napomena (nije obavezno)",
+      "notePlaceholder": "npr. bočni zid, oko 2 m visine",
+      "submit": "Pošalji prijavu",
+      "confirmSubmit": "Potvrdi prijavu",
+      "sending": "Šaljem…"
+    },
+    "errors": {
+      "rate_limited": "Previše prijava za kratko vreme. Pokušaj ponovo kasnije.",
+      "captcha": "Provera nije uspela. Pokušaj ponovo.",
+      "outside": "Prijave su moguće samo na teritoriji Srbije.",
+      "generic": "Nešto nije u redu. Pokušaj ponovo."
+    },
+    "done": {
+      "heading": "Hvala!",
+      "body": "Tvoja prijava je na mapi. Ekipa za čišćenje će se pobrinuti za nju.",
+      "confirmedBody": "Hvala na potvrdi – ovo mesto sada ima veći prioritet.",
+      "viewMap": "Pogledaj na mapi",
+      "another": "Prijavi još jedan"
+    }
+  },
+  "login": {
+    "heading": "Prijava na nalog",
+    "body": "Nalog nije potreban za prijavu grafita. Koristi se za administratore i za praćenje sopstvenih prijava.",
+    "email": "E-pošta",
+    "send": "Pošalji link za prijavu",
+    "sent": "Proveri e-poštu i otvori link za prijavu.",
+    "error": "Slanje nije uspelo. Pokušaj ponovo.",
+    "loggedInAs": "Prijavljen/a kao {email}",
+    "signingIn": "Prijavljivanje…"
+  },
+  "admin": {
+    "heading": "Administracija",
+    "needLogin": "Prijavi se na nalog da bi pristupio/la administraciji.",
+    "notAdmin": "Ovaj nalog nema administratorska prava.",
+    "all": "Sve",
+    "markCleaned": "Označi kao očišćeno",
+    "reopen": "Ponovo otvori",
+    "hide": "Sakrij",
+    "unhide": "Prikaži",
+    "delete": "Obriši",
+    "confirmDelete": "Dodirni ponovo za brisanje",
+    "viewOnMap": "Na mapi",
+    "empty": "Nema prijava."
+  }
+}
