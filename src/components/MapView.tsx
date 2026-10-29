@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import * as maplibregl from "maplibre-gl";
-import type { GeoJSONSource } from "maplibre-gl";
+import * as maplibregl from "@/lib/maplibre";
+import type { GeoJSONSource } from "@/lib/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { isSupabaseConfigured, MAP_STYLE, photoUrl, SERBIA_CENTER } from "@/lib/config";
@@ -203,7 +203,7 @@ export default function MapView({ lang, dict }: Props) {
 
   return (
     <div className="relative h-dvh w-full">
-      <div ref={container} className="absolute inset-0" />
+      <div ref={container} className="h-full w-full" />
 
       <header className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-3 pt-[max(0.75rem,env(safe-area-inset-top))]">
         <div className="pointer-events-auto rounded-xl bg-background/95 px-3 py-2 shadow">
