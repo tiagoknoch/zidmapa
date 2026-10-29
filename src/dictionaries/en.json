@@ -24,7 +24,8 @@
     "cleanedOn": "Cleaned",
     "reports": "Reports: {n}",
     "notConfigured": "Database not configured yet: add your Supabase keys to .env.local.",
-    "loadError": "Couldn't load reports."
+    "loadError": "Couldn't load reports.",
+    "noWebgl": "Your browser can't display the map, but you can still report graffiti."
   },
   "report": {
     "back": "Back",

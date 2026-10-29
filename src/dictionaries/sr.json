@@ -24,7 +24,8 @@
     "cleanedOn": "Očišćeno",
     "reports": "Broj prijava: {n}",
     "notConfigured": "Baza još nije podešena: dodaj Supabase ključeve u .env.local.",
-    "loadError": "Prijave ne mogu da se učitaju."
+    "loadError": "Prijave ne mogu da se učitaju.",
+    "noWebgl": "Tvoj pregledač ne može da prikaže mapu, ali i dalje možeš da prijaviš grafit."
   },
   "report": {
     "back": "Nazad",

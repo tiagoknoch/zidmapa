@@ -79,6 +79,7 @@ export default function MapView({ lang, dict }: Props) {
   const [reports, setReports] = useState<Report[] | null>(null);
   const [showCleaned, setShowCleaned] = useState(false);
   const firstVisit = useSyncExternalStore(noSubscribe, isFirstVisit, () => false);
+  const canShowMap = useSyncExternalStore(noSubscribe, maplibregl.supportsWebGL2, () => true);
   // null until the user opens or closes the panel; until then it follows firstVisit.
   const [aboutChoice, setAboutChoice] = useState<boolean | null>(null);
   const showAbout = aboutChoice ?? firstVisit;
@@ -119,6 +120,8 @@ export default function MapView({ lang, dict }: Props) {
 
   // Create the map.
   useEffect(() => {
+    // Check directly: during hydration canShowMap still has the server value.
+    if (!maplibregl.supportsWebGL2()) return;
     const map = new maplibregl.Map({
       container: container.current!,
       style: MAP_STYLE,
@@ -279,6 +282,9 @@ export default function MapView({ lang, dict }: Props) {
           />
           {dict.map.showCleaned}
         </label>
+        {!canShowMap && (
+          <p className="max-w-64 rounded-xl bg-background/95 px-3 py-2 text-sm text-accent shadow">{dict.map.noWebgl}</p>
+        )}
         {error && <p className="max-w-64 rounded-xl bg-background/95 px-3 py-2 text-sm text-accent shadow">{error}</p>}
         {!error && !reports && (
           <p className="rounded-xl bg-background/95 px-3 py-2 text-sm text-muted shadow">{dict.map.loading}</p>

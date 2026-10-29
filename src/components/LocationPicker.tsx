@@ -19,6 +19,8 @@ export default function LocationPicker({ value, onChange }: Props) {
   });
 
   useEffect(() => {
+    // Without WebGL2 the pin can't be shown; the GPS or photo location is still used.
+    if (!maplibregl.supportsWebGL2()) return;
     const map = new maplibregl.Map({
       container: container.current!,
       style: MAP_STYLE,
