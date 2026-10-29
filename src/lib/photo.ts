@@ -1,7 +1,7 @@
 import exifr from "exifr";
 
-const MAX_SIDE = 1600;
-const QUALITY = 0.8;
+const MAX_SIDE = 1280;
+const QUALITY = 0.7;
 
 // Re-encodes the photo through a canvas: resizes it, applies orientation and
 // drops all EXIF metadata (including GPS) before it ever leaves the phone.

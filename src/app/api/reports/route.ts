@@ -98,7 +98,8 @@ export async function POST(request: NextRequest) {
   const photoPath = `${now.getUTCFullYear()}/${String(now.getUTCMonth() + 1).padStart(2, "0")}/${randomUUID()}.${ext}`;
   const { error: uploadError } = await supabase.storage
     .from(PHOTO_BUCKET)
-    .upload(photoPath, photo, { contentType: photo.type });
+    // Paths are unique and never overwritten, so browsers can cache for a year.
+    .upload(photoPath, photo, { contentType: photo.type, cacheControl: "31536000" });
   if (uploadError) {
     Sentry.captureException(uploadError);
     return fail("generic", 500);
