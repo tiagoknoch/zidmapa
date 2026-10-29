@@ -1,0 +1,9 @@
+# The map and the about panel are public; admin, login and the APIs are not for crawlers.
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /monitoring
+Disallow: /en/admin
+Disallow: /sr/admin
+Disallow: /en/login
+Disallow: /sr/login
