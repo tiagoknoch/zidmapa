@@ -7,6 +7,7 @@ import type { Dictionary, Locale } from "@/lib/i18n";
 import { PHOTO_BUCKET, photoUrl } from "@/lib/config";
 import { fill, formatDate } from "@/lib/format";
 import { getSupabase, REPORT_COLUMNS, type Report } from "@/lib/supabase/client";
+import { useAutoRefresh } from "@/lib/useAutoRefresh";
 
 type Props = { lang: Locale; dict: Dictionary };
 type Filter = "all" | Report["status"];
@@ -42,6 +43,7 @@ export default function AdminPanel({ lang, dict }: Props) {
   useEffect(() => {
     if (access === "ok") fetchReports(filter).then(setReports);
   }, [access, filter]);
+  useAutoRefresh(load, access === "ok");
 
   async function setStatus(report: Report, status: Report["status"]) {
     await getSupabase()

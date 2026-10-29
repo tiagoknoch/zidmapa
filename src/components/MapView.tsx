@@ -10,6 +10,7 @@ import type { Dictionary, Locale } from "@/lib/i18n";
 import { isSupabaseConfigured, MAP_STYLE, photoUrl, SERBIA_CENTER } from "@/lib/config";
 import { fill, formatDate } from "@/lib/format";
 import { getSupabase, REPORT_COLUMNS, type Report } from "@/lib/supabase/client";
+import { useAutoRefresh } from "@/lib/useAutoRefresh";
 import AboutPanel from "./AboutPanel";
 
 const ABOUT_SEEN_KEY = "zidmapa-about-seen";
@@ -92,8 +93,10 @@ export default function MapView({ lang, dict }: Props) {
     } catch {}
   }
 
-  // Load reports once.
-  useEffect(() => {
+  // Load reports, then keep them fresh. A failed refresh keeps the old data;
+  // only a failed first load shows an error.
+  const loaded = useRef(false);
+  function loadReports() {
     if (!isSupabaseConfigured) return;
     getSupabase()
       .from("reports")
@@ -102,10 +105,17 @@ export default function MapView({ lang, dict }: Props) {
       .order("created_at", { ascending: false })
       .limit(1000)
       .then(({ data, error }) => {
-        if (error) setError(dict.map.loadError);
-        else setReports(data as Report[]);
+        if (!error) {
+          loaded.current = true;
+          setError(null);
+          setReports(data as Report[]);
+        } else if (!loaded.current) {
+          setError(dict.map.loadError);
+        }
       });
-  }, [dict]);
+  }
+  useEffect(loadReports, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useAutoRefresh(loadReports);
 
   // Create the map.
   useEffect(() => {
