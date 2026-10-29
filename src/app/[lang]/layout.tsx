@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
 import { getDictionary, hasLocale } from "@/lib/i18n";
 import { locales } from "@/lib/config";
 import "../globals.css";
@@ -32,7 +33,10 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
 
   return (
     <html lang={lang === "sr" ? "sr-Latn" : "en"} className="h-full antialiased">
-      <body className="h-full">{children}</body>
+      <body className="h-full">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
