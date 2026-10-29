@@ -8,7 +8,8 @@
     "account": "Nalog",
     "logout": "Odjavi se",
     "admin": "Administracija",
-    "switchLanguage": "English"
+    "switchLanguage": "English",
+    "about": "O projektu"
   },
   "status": {
     "reported": "Za čišćenje",
@@ -70,7 +71,7 @@
     },
     "done": {
       "heading": "Hvala!",
-      "body": "Tvoja prijava je na mapi. Ekipa za čišćenje će se pobrinuti za nju.",
+      "body": "Tvoja prijava je na mapi, gde je volonteri mogu pronaći i očistiti.",
       "confirmedBody": "Hvala na potvrdi – ovo mesto sada ima veći prioritet.",
       "viewMap": "Pogledaj na mapi",
       "another": "Prijavi još jedan"
@@ -99,5 +100,23 @@
     "confirmDelete": "Dodirni ponovo za brisanje",
     "viewOnMap": "Na mapi",
     "empty": "Nema prijava."
+  },
+  "about": {
+    "heading": "Šta je ZidMapa?",
+    "intro": "ZidMapa je zajednička mapa grafita i uvredljivih poruka na zidovima gradova u Srbiji. Svako može da doda mesto sa fotografijom, a svako ko želi da pomogne može da vidi gde je potrebno čišćenje.",
+    "actionHeading": "„Gradi, pa posadi”",
+    "action": "Studenti su 28. oktobra 2026. pozvali građane na radnu akciju čišćenja zgrada, ulica, parkova i fasada, u svom kraju ili bilo gde u gradu. To uključuje i uvredljive parole koje već dugo obeležavaju fasade, a pozvani su i umetnici da pomognu da se one obnove. Akcija nema rok: traje sve dok posao ne bude gotov.",
+    "sources": "Više o tome:",
+    "howHeading": "Kako funkcioniše",
+    "steps": [
+      "Vidiš grafit koji treba ukloniti? Fotografiši ga preko „Prijavi grafit”. Lokacija se dodaje automatski.",
+      "Pojavljuje se na mapi kao crvena oznaka. Ako ga je neko već prijavio, samo potvrdiš postojeću prijavu.",
+      "Ideš da čistiš? Izaberi crvene oznake u svojoj blizini. Ponesi rukavice, četke, boju i kese.",
+      "Očišćena mesta postaju zelena, pa svi vide napredak."
+    ],
+    "privacy": "Prijava je anonimna i ne treba ti nalog. Podaci o lokaciji se uklanjaju iz fotografije pre slanja. Molimo te da ne fotografišeš ljude.",
+    "independent": "ZidMapa je nezavisan volonterski projekat i ne vode ga organizatori akcije. Besplatna je i otvorenog koda:",
+    "sourceCode": "izvorni kod na GitHubu",
+    "close": "Prikaži mapu"
   }
 }

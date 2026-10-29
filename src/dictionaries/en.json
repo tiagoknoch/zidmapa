@@ -8,7 +8,8 @@
     "account": "Account",
     "logout": "Log out",
     "admin": "Admin",
-    "switchLanguage": "Srpski"
+    "switchLanguage": "Srpski",
+    "about": "About"
   },
   "status": {
     "reported": "Needs cleaning",
@@ -70,7 +71,7 @@
     },
     "done": {
       "heading": "Thank you!",
-      "body": "Your report is on the map. A cleaning team will take care of it.",
+      "body": "Your report is on the map, where volunteers can find it and clean it.",
       "confirmedBody": "Thanks for confirming – this spot now has a higher priority.",
       "viewMap": "View on map",
       "another": "Report another"
@@ -99,5 +100,23 @@
     "confirmDelete": "Tap again to delete",
     "viewOnMap": "View on map",
     "empty": "No reports."
+  },
+  "about": {
+    "heading": "What is ZidMapa?",
+    "intro": "ZidMapa is a shared map of graffiti and insulting messages on the walls of Serbian cities. Anyone can add a spot with a photo, and anyone who wants to help can see where cleaning is needed.",
+    "actionHeading": "“Gradi, pa posadi”",
+    "action": "On 28 October 2026 students called on citizens to join a work action to clean buildings, streets, parks and facades, in their own neighbourhood or anywhere in the city. That includes the insulting slogans that have marked facades for a long time, and artists are invited to help restore them. There is no end date: it lasts until the work is done.",
+    "sources": "Read more:",
+    "howHeading": "How it works",
+    "steps": [
+      "See graffiti that should go? Take a photo with “Report graffiti”. The location is added automatically.",
+      "It appears on the map as a red pin. If someone already reported it, you confirm theirs instead.",
+      "Going out to clean? Pick red pins near you. Bring gloves, brushes, paint and bags.",
+      "Cleaned spots turn green, so everyone can see the progress."
+    ],
+    "privacy": "Reporting is anonymous and needs no account. Location data is removed from photos before upload. Please don't photograph people.",
+    "independent": "ZidMapa is an independent volunteer project, not run by the action's organisers. It is free and open source:",
+    "sourceCode": "source code on GitHub",
+    "close": "Show the map"
   }
 }

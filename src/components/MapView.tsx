@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import * as maplibregl from "@/lib/maplibre";
 import type { GeoJSONSource } from "@/lib/maplibre";
@@ -9,6 +9,19 @@ import type { Dictionary, Locale } from "@/lib/i18n";
 import { isSupabaseConfigured, MAP_STYLE, photoUrl, SERBIA_CENTER } from "@/lib/config";
 import { fill, formatDate } from "@/lib/format";
 import { getSupabase, REPORT_COLUMNS, type Report } from "@/lib/supabase/client";
+import AboutPanel from "./AboutPanel";
+
+const ABOUT_SEEN_KEY = "zidmapa-about-seen";
+const noSubscribe = () => () => {};
+
+// Explain the app on the first visit, but not when opening a shared report link.
+function isFirstVisit() {
+  try {
+    return !localStorage.getItem(ABOUT_SEEN_KEY) && !new URLSearchParams(window.location.search).has("r");
+  } catch {
+    return false;
+  }
+}
 
 type Props = { lang: Locale; dict: Dictionary };
 
@@ -60,9 +73,20 @@ export default function MapView({ lang, dict }: Props) {
   const mapRef = useRef<maplibregl.Map | null>(null);
   const [reports, setReports] = useState<Report[] | null>(null);
   const [showCleaned, setShowCleaned] = useState(false);
+  const firstVisit = useSyncExternalStore(noSubscribe, isFirstVisit, () => false);
+  // null until the user opens or closes the panel; until then it follows firstVisit.
+  const [aboutChoice, setAboutChoice] = useState<boolean | null>(null);
+  const showAbout = aboutChoice ?? firstVisit;
   const [error, setError] = useState<string | null>(
     isSupabaseConfigured ? null : dict.map.notConfigured,
   );
+
+  function closeAbout() {
+    setAboutChoice(false);
+    try {
+      localStorage.setItem(ABOUT_SEEN_KEY, "1");
+    } catch {}
+  }
 
   // Load reports once.
   useEffect(() => {
@@ -213,6 +237,15 @@ export default function MapView({ lang, dict }: Props) {
           <p className="text-xs text-muted">{dict.app.tagline}</p>
         </div>
         <nav className="pointer-events-auto flex gap-2 text-sm">
+          <button
+            type="button"
+            onClick={() => setAboutChoice(true)}
+            aria-label={dict.nav.about}
+            title={dict.nav.about}
+            className="size-9 rounded-full bg-background/95 font-serif text-base font-bold italic shadow"
+          >
+            i
+          </button>
           <Link href={`/${otherLang}`} className="rounded-xl bg-background/95 px-3 py-2 shadow">
             {dict.nav.switchLanguage}
           </Link>
@@ -246,6 +279,8 @@ export default function MapView({ lang, dict }: Props) {
           📷 {dict.map.reportButton}
         </Link>
       </div>
+
+      {showAbout && <AboutPanel dict={dict} onClose={closeAbout} />}
     </div>
   );
 }
