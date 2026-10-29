@@ -1,4 +1,5 @@
 import { createHash, randomUUID } from "node:crypto";
+import * as Sentry from "@sentry/nextjs";
 import type { NextRequest } from "next/server";
 import { createAdminClient, getRequestUserId } from "@/lib/supabase/server";
 import {
@@ -38,7 +39,7 @@ async function verifyTurnstile(token: string, ip: string | null) {
       "error-codes"?: string[];
     };
     if (data["error-codes"]?.includes("invalid-input-secret")) {
-      console.error("Turnstile: TURNSTILE_SECRET_KEY is invalid");
+      Sentry.captureMessage("Turnstile: TURNSTILE_SECRET_KEY is invalid", "error");
     }
     if (!data.success) return false;
     if (isTestSecret(secret)) return true;
@@ -98,7 +99,10 @@ export async function POST(request: NextRequest) {
   const { error: uploadError } = await supabase.storage
     .from(PHOTO_BUCKET)
     .upload(photoPath, photo, { contentType: photo.type });
-  if (uploadError) return fail("generic", 500);
+  if (uploadError) {
+    Sentry.captureException(uploadError);
+    return fail("generic", 500);
+  }
 
   const reporterId = await getRequestUserId(request);
   let reportId = confirmId;
@@ -110,6 +114,7 @@ export async function POST(request: NextRequest) {
       .select("id")
       .single();
     if (error) {
+      Sentry.captureException(error);
       await supabase.storage.from(PHOTO_BUCKET).remove([photoPath]);
       return fail("generic", 500);
     }
@@ -123,7 +128,10 @@ export async function POST(request: NextRequest) {
     reporter_id: reporterId,
     ip_hash: ipHash,
   });
-  if (submissionError) return fail("generic", 500);
+  if (submissionError) {
+    Sentry.captureException(submissionError);
+    return fail("generic", 500);
+  }
 
   return Response.json({ id: reportId, confirmed: Boolean(confirmId) });
 }
