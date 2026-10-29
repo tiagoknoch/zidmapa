@@ -5,6 +5,16 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  // Thumbnails of report photos, resized and cached by the image optimizer so
+  // Supabase only serves each original once per size.
+  images: {
+    remotePatterns: process.env.NEXT_PUBLIC_SUPABASE_URL
+      ? [new URL(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/photos/**`)]
+      : [],
+    qualities: [75],
+    // Photo paths are never reused, so cached thumbnails never go stale.
+    minimumCacheTTL: 2678400, // 31 days
+  },
   turbopack: {
     rules: {
       "*.css": {

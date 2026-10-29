@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { inSerbia, NEARBY_RADIUS_M, photoUrl } from "@/lib/config";
@@ -240,8 +241,13 @@ export default function ReportFlow({ lang, dict }: Props) {
               <ul className="grid grid-cols-2 gap-3">
                 {nearby.map((n) => (
                   <li key={n.id} className="overflow-hidden rounded-xl border border-border">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={photoUrl(n.photo_path)} alt="" className="aspect-square w-full bg-surface object-cover" />
+                    <Image
+                      src={photoUrl(n.photo_path)}
+                      alt=""
+                      width={320}
+                      height={320}
+                      className="aspect-square w-full bg-surface object-cover"
+                    />
                     <div className="space-y-2 p-2">
                       <p className="text-xs text-muted">
                         {fill(t.nearby.distance, { m: Math.round(n.distance_m) })} ·{" "}

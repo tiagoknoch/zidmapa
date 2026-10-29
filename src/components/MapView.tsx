@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { getImageProps } from "next/image";
 import * as maplibregl from "@/lib/maplibre";
 import type { GeoJSONSource } from "@/lib/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -41,7 +42,10 @@ function popupHtml(r: Report, lang: Locale, dict: Dictionary) {
   const div = document.createElement("div");
   div.className = "w-60 text-sm";
   const img = document.createElement("img");
-  img.src = photoUrl(r.photo_path);
+  // The popup is built outside React, so take the thumbnail URLs from next/image.
+  const { props } = getImageProps({ src: photoUrl(r.photo_path), alt: "", width: 240, height: 160 });
+  img.src = props.src;
+  if (props.srcSet) img.srcset = props.srcSet;
   img.alt = "";
   img.className = "h-40 w-full object-cover bg-surface";
   const body = document.createElement("div");

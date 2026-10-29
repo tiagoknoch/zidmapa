@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { PHOTO_BUCKET, photoUrl } from "@/lib/config";
 import { fill, formatDate } from "@/lib/format";
@@ -101,8 +102,13 @@ export default function AdminPanel({ lang, dict }: Props) {
           <ul className="space-y-3">
             {reports.map((r) => (
               <li key={r.id} className="flex gap-3 rounded-xl border border-border p-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={photoUrl(r.photo_path)} alt="" className="h-24 w-24 shrink-0 rounded-lg bg-surface object-cover" />
+                <Image
+                  src={photoUrl(r.photo_path)}
+                  alt=""
+                  width={96}
+                  height={96}
+                  className="h-24 w-24 shrink-0 rounded-lg bg-surface object-cover"
+                />
                 <div className="min-w-0 flex-1 space-y-2 text-sm">
                   <p>
                     <span className={`font-semibold ${r.status === "cleaned" ? "text-ok" : "text-accent"}`}>
