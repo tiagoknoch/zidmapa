@@ -79,7 +79,7 @@
   },
   "login": {
     "heading": "Log in",
-    "body": "You don't need an account to report graffiti. Logging in is for admins and for keeping track of your own reports.",
+    "body": "You don't need an account to report graffiti. Logging in is only for admins.",
     "email": "Email",
     "send": "Send login link",
     "sent": "Check your email and open the login link.",

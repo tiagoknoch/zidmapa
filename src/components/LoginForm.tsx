@@ -31,7 +31,8 @@ export default function LoginForm({ lang, dict }: Props) {
     setState("sending");
     const { error } = await getSupabase().auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: `${location.origin}/${lang}/login` },
+      // Accounts are added by hand; never sign up someone new from this form.
+      options: { emailRedirectTo: `${location.origin}/${lang}/login`, shouldCreateUser: false },
     });
     setState(error ? "error" : "sent");
   }

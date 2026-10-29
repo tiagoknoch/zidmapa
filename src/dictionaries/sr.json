@@ -79,7 +79,7 @@
   },
   "login": {
     "heading": "Prijava na nalog",
-    "body": "Nalog nije potreban za prijavu grafita. Koristi se za administratore i za praćenje sopstvenih prijava.",
+    "body": "Nalog nije potreban za prijavu grafita. Prijava je samo za administratore.",
     "email": "E-pošta",
     "send": "Pošalji link za prijavu",
     "sent": "Proveri e-poštu i otvori link za prijavu.",
